@@ -117,9 +117,18 @@
   <meta name="news_keywords" content="{{indseo.metakeyword}}-{{ journalist.first_name }} {{ journalist.last_name }}" />
   <meta property="og:url" content="https://www.janpunjab.com{{ request.path }}" />
   <meta name="twitter:url" content="https://twitter.com{{ request.path }}" />
-  <meta property="og:image"
-    content="https://www.janpunjab.com{{ journalist.profile_picture.url }}" />
-  <meta name="twitter:image" content="https://www.janpunjab.com{{ journalist.profile_picture.url }}" />
+  {% if journalist.profile_picture %}
+    <meta property="og:image"
+          content="https://www.janpunjab.com{{ journalist.profile_picture.url }}" />
+    <meta name="twitter:image"
+          content="https://www.janpunjab.com{{ journalist.profile_picture.url }}" />
+  {% else %}
+    <meta property="og:image"
+          content="https://www.janpunjab.com{% static 'assets/img/user.jpg' %}" />
+    <meta name="twitter:image"
+          content="https://www.janpunjab.com{% static 'assets/img/user.jpg' %}" />
+  {% endif %}
+
   <link rel="canonical" href="https://www.janpunjab.com{{ request.path }}" />
 
   <meta property="og:image:type" content="image/png" />

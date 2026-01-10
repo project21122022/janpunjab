@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="{% static 'assets/category/css/app.css' %}">
 <link rel="stylesheet" href="{% static 'assets/category/css/responsive.css' %}">
 
-<div id="main-wrapper" class="main-wrapper container">
+<div id="main-wrapper" class="main-wrapper">
     {% if BlogData %}
     <section class="blog-hero-area mb-3 mt-30">
         <div class="container">
@@ -516,8 +516,7 @@
   <div class="container">
     <!-- 🔴 Section Title -->
     <div class="text-center mb-4">
-      <h2 class="fw-bold text-white mb-1">🎥 Video News</h2>
-      
+      <h2 class="fw-bold text-dark mb-1"> Video News</h2>
     </div>
 
     <!-- 🧱 Video Grid -->
@@ -685,6 +684,14 @@
 <script src="{% static 'assets/category/js/app.js' %}"></script>
 
 <style>
+    .video-section {
+        /* background: linear-gradient(to bottom right, #1e3c72, #ff512f); */
+        background-size: cover;
+        position: relative;
+        padding: 20px 0;
+        /* background: linear-gradient(to bottom right, #a8edea, #fed6e3); */
+        background: linear-gradient(to top right, #fff5b7, #f9d976);
+    }
     /* 🎨 Modern Card Shadows & Design */
     .post-block-style-wrapper {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);

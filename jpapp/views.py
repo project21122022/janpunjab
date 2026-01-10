@@ -364,7 +364,8 @@ def ErrorPage(request):
 # All-News-----------
 def AllNews(request,slug):
     alnslug='/all-news/'+ slug
-    seo=seo_optimization.objects.get(pageslug=alnslug)
+    # seo=seo_optimization.objects.get(pageslug=alnslug)
+    seo = seo_optimization.objects.filter(pageslug=alnslug).first()
     current_datetime = datetime.now()
     page_number = request.GET.get('page', 1)  
     # Get the page number from the request, default to 1 if not provided
@@ -471,7 +472,8 @@ def AllNews(request,slug):
 # Video-all-News-details-----------
 def AllvideoNews(request,slug):
     alnslug='/all-video-news/'+ slug
-    seo=seo_optimization.objects.get(pageslug=alnslug)
+    # seo=seo_optimization.objects.get(pageslug=alnslug)
+    seo = seo_optimization.objects.filter(pageslug=alnslug).first()
     
     if slug == 'articles':
         blogdata=VideoNews.objects.filter(articles=1,is_active='active',video_type='video').order_by('-id')
@@ -1994,7 +1996,9 @@ def profiledxb(request, username ):
     breaking = NewsPost.objects.filter(schedule_date__lt=current_datetime, BreakingNews=1, status='active').order_by('-id')[:8]
     podcast = VideoNews.objects.filter(is_active='active').order_by('-id')[:1]
     video_articles = VideoNews.objects.filter(articles=1, is_active='active', video_type='video').order_by('order')[:2]
-    seo=seo_optimization.objects.get(pageslug='journalist-profile')
+    # seo=seo_optimization.objects.get(pageslug='journalist-profile')
+    seo = seo_optimization.objects.filter(pageslug='journalist-profile').first()
+    
     context = {
         'indseo':seo,
         'pageurl':'journalist_page',

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
- <div class="trending-bar mb-2 topspace">
+ <div class="trending-bar py-2 mt-5">
      
         <div class="d-flex align-items-center justify-content-between overflow-hidden">
 
@@ -44,13 +44,8 @@
     </div>
 
     
-<!-- ✅ Hero Slider -->
-<div class="container">
-  <!-- Header -->
-  <div class="d-flex justify-content-between align-items-center my-3">
-    <h5 class="fw-bold text-uppercase m-0">ਲੇਟੈਸਟ ਵੀਡੀਓ</h5>
-    <a href="/all-video-news/all" class="text-btn text-decoration-none fw-semibold">ਸਾਰੇ ਵੇਖੋ</a>
-  </div>
+<!-- ✅ Hero Slider (GCC Slider) -->
+<div class="container ">
   <div class="card-background border-bottom mb-2">
     <div class="slider-container-top">
       <div class="trending-swiper">
@@ -89,7 +84,7 @@
     <div class="col-lg-9 col-md-12">
 
       <!-- 🌐 Slider + Two Ads Row -->
-      <div class="row mb-4" id="punjabNewsSection">
+      <div class="row mb-4">
         <div class="card-header border-0 d-flex align-items-center p-3">
           <h6 class="mb-0 fw-bold ">ਪੰਜਾਬ ਖਬਰਾਂ</h6>
         </div>
@@ -153,7 +148,7 @@
       </div>
 
       <!-- 🌟 Top Stories + 2 More News -->
-      <div class="row mb-4" id="breakingNewsSection">
+      <div class="row mb-4">
         <!-- Top Stories -->
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="card-bg-dark shadow-sm border top-stories-widget h-100">
@@ -240,7 +235,7 @@
       </div>
 
       <!-- 🌟 Top Breaking News + 2 More News -->
-      <div class="row mb-4" id="nationalNewsSection">
+      <div class="row mb-4">
         <!-- Top Stories -->
         <div class="col-lg-4 col-md-6">
           <div class="card-bg-dark shadow-sm border top-stories-widget h-100">
@@ -328,7 +323,7 @@
     </div>
 
     <!-- ================= RIGHT SECTION (col-3): Ads Sidebar ================= -->
-    <div class="col-lg-3 col-md-12" id="worldNewsSection">
+    <div class="col-lg-3 col-md-12">
       <!-- Top Stories -->
 
       <div class="card-bg-dark shadow-sm border rounded top-stories-widge mb-3">
@@ -364,7 +359,7 @@
 </div>
 
 <!-- ARTICLES SECTION: MOBILE ONLY -->
-<section class="d-block d-md-none bg-light py-2" id="businessNewsSection">
+<section class="d-block d-md-none bg-light py-2">
   <div class="container-fluid">
     <div class="text-center mb-2">
       <h5 class="mb-0 newsten-title py-2">ਪ੍ਰਮੁੱਖ ਲੇਖ</h5>
@@ -397,9 +392,8 @@
     </div>
   </div>
 </section>
-
 <!-- News Tabs Section -->
-<div class="container my-4" id="entertainmentNewsSection">
+<div class="container my-4">
   <div class="row">
     <!-- ✅ MAIN CONTENT -->
     <div class="col-md-9 mb-3">
@@ -525,14 +519,102 @@
 
     <!-- ✅ RIGHT SIDEBAR -->
     <div class="col-lg-3 col-md-12 col-sm-12">
-      <!-- {% include 'reels-news.html' %} -->
-      
+      {% include 'reels-news.html' %}
+
       
     </div>
   </div>
 </div>
 
 
+
+<!-- 🎥 Video News Section -->
+<div class="col-lg-8 col-md-12 col-sm-12 py-4 bg-white mb-5">
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="fw-bold text-uppercase m-0">ਲੇਟੈਸਟ ਵੀਡੀਓ</h5>
+    <a href="/all-video-news/all" class="text-btn text-decoration-none fw-semibold">ਸਾਰੇ ਵੇਖੋ</a>
+  </div>
+
+  <!-- 🎞️ Video Slider -->
+  <!-- <div class="card-background border-bottom mb-4">
+    <div class="slider-container-top">
+      <div class="trending-swiper">
+        <div class="swiper-wrapper">
+          {% for CatVid in videos %}
+          <div class="swiper-slide">
+            <div class="ratio ratio-16x9">
+              <iframe
+                class="rounded"
+                src="https://www.youtube.com/embed/{{ CatVid.video_url|escape }}?rel=0&modestbranding=1"
+                title="{{ CatVid.video_title|escape }}"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin">
+              </iframe>
+            </div>
+            <div class="dxv-overlay bg-gray p-2">
+              <span class="category">{{ CatVid.News_Category|default:"Video" }}</span>
+              <a href="/video/{{ CatVid.slug|escape }}" class="text-decoration-none">
+                <h6 class="title1 text-dark mt-1">{{ CatVid.video_title|truncatechars:160 }}</h6>
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        
+        <div class="swiper-button-prev" id="prevBtn"></div>
+        <div class="swiper-button-next" id="skipBtn"></div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="block-content card-background">
+    {% for news in LatestNews|slice:"1:5" %}
+    <article class="row align-items-stretch mt-2 border-bottom pb-3 mb-3">
+     
+      <div class="col-md-3 col-12 mb-2 mb-md-0">
+        <div class="ratio ratio-16x9">
+          {% if news.video_file %}
+          <video class="w-100 h-100 object-fit-cover rounded" preload="none" loop playsinline autoplay muted>
+            <source src="{{ news.video_file.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          {% else %}
+          <a href="/{{ news.newsfrom.slug }}/{{ news.post_cat.sub_cat.cat_slug }}/{{ news.slug }}">
+            <img src="{{ news.post_image.url }}" alt="{{ news.post_title }}" title="{{ news.post_title }}"
+              class="img-fluid rounded w-100 h-100 object-fit-cover" loading="lazy" />
+          </a>
+          {% endif %}
+        </div>
+      </div>
+
+     
+      <div class="col-md-9 col-12 d-flex flex-column justify-content-between">
+        <div>
+          <div class="title1 mb-1">
+            <a href="/{{ news.newsfrom.slug }}/{{ news.post_cat.sub_cat.cat_slug }}/{{ news.slug }}" class="text-decoration-none text-dark">
+              {{ news.post_title|truncatechars:180 }}
+            </a>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center small mt-2">
+          <span>{{ news.post_date }}</span>
+          <div class="share-icons-container mx-2">
+            {% include 'share.html' %}
+          </div>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div> -->
+
+  
+</div>
 
 
 
@@ -577,7 +659,6 @@
     });
   });
 </script>
-
 <script>
   let players = [];
   let swiper;
@@ -715,93 +796,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-
-    const menuLinks = document.querySelectorAll('.mobilemenu-link');
-    const header = document.querySelector('.mobilemenu-container');
-
-    /* ===============================
-       1️⃣ CLICK HANDLER (redirect + active)
-    =============================== */
-    menuLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-
-            if (href.startsWith('#')) {
-                e.preventDefault();
-
-                const sectionId = href.replace('#', '');
-
-                // active instantly
-                menuLinks.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-
-                // redirect
-                window.location.href = '/?scrollTo=' + sectionId;
-            }
-        });
-    });
-
-
-    /* ===============================
-       2️⃣ PAGE LOAD SCROLL + ACTIVE
-    =============================== */
-    const params = new URLSearchParams(window.location.search);
-    const targetId = params.get('scrollTo');
-
-    if (targetId) {
-        setTimeout(() => {
-            const targetEl = document.getElementById(targetId);
-
-            if (targetEl) {
-                const headerHeight = header?.offsetHeight || 70;
-                const elementPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - headerHeight - 10;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-
-                // set active after reload
-                menuLinks.forEach(link => {
-                    link.classList.toggle(
-                        'active',
-                        link.getAttribute('href') === '#' + targetId
-                    );
-                });
-            }
-        }, 600);
-    }
-
-
-    /* ===============================
-       3️⃣ SCROLL SPY (auto active on scroll)
-    =============================== */
-    const sections = Array.from(menuLinks)
-        .map(link => document.querySelector(link.getAttribute('href')))
-        .filter(Boolean);
-
-    window.addEventListener('scroll', () => {
-        const scrollPos = window.scrollY + (header?.offsetHeight || 70) + 20;
-
-        sections.forEach((section, index) => {
-            if (
-                scrollPos >= section.offsetTop &&
-                scrollPos < section.offsetTop + section.offsetHeight
-            ) {
-                menuLinks.forEach(l => l.classList.remove('active'));
-                menuLinks[index].classList.add('active');
-            }
-        });
-    });
-
-});
-</script>
-
-
 
 <style>
   /* Slider */
