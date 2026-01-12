@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from journalist.models import Journalist
 from autoslug import AutoSlugField
 
+import os
 from io import BytesIO
 from django.core.files.base import ContentFile
 from PIL import Image
@@ -89,18 +90,33 @@ class NewsPost(models.Model):
 
         if self.post_image:
             try:
-                img = Image.open(self.post_image.path)
-                original_format = img.format  # e.g. 'JPEG', 'PNG', 'WEBP'
+                file_path = self.post_image.path
+                if not os.path.exists(file_path):
+                    return
 
-                # Convert as needed
-                if img.mode in ("RGBA", "P") and original_format == "JPEG":
-                    img = img.convert("RGB")
-
+                img = Image.open(file_path)
                 desired_size = (1280, 720)
                 img.thumbnail(desired_size)
-
-                # Overwrite in same format
-                img.save(self.post_image.path, format=original_format, quality=90)
+                
+                # Check/Convert path to .webp
+                path_no_ext, ext = os.path.splitext(file_path)
+                new_path = path_no_ext + ".webp"
+                
+                img.save(new_path, format='WEBP', quality=90)
+                img.close()
+                
+                # If extension was not webp, delete old file and update DB
+                if new_path != file_path:
+                    if os.path.exists(file_path):
+                        os.remove(file_path)
+                    
+                    # Update database reference
+                    name_no_ext, _ = os.path.splitext(self.post_image.name)
+                    new_name = name_no_ext + ".webp"
+                    
+                    self.post_image.name = new_name
+                    NewsPost.objects.filter(pk=self.pk).update(post_image=new_name)
+                    
             except Exception as e:
                 print("Image processing error:", e)
 
