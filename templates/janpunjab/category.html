@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="{% static 'assets/category/css/vendor/remixicon.css' %}"> -->
 <link rel="stylesheet" href="{% static 'assets/category/css/app.css' %}">
 <link rel="stylesheet" href="{% static 'assets/category/css/responsive.css' %}">
-
+<div class="topspace"></div>
 <div id="main-wrapper" class="main-wrapper">
     {% if BlogData %}
-    <section class="blog-hero-area mb-3 mt-30">
+<section class="blog-hero-area mb-3 mt-30">
         <div class="container">
             <div class="mb-3">
                 <div class="section-title pt-3">NEWS</div>
@@ -174,7 +174,7 @@
                 </div>
             </div>                 
         </div>
-    </section>
+</section>
     {% endif %}
 
     {% if latestnews %}
@@ -367,7 +367,7 @@
 
 
     {% if trendpost %}
-    <section class="editor-choice-two-area py-4">
+<section class="editor-choice-two-area py-4">
         <div class="container">
             <!-- 🔹 Section Title -->
             <div class="mb-4 text-center text-lg-start">
@@ -505,85 +505,85 @@
             </div>
             </div>
         </div>
-        </section>
+</section>
 
     {% endif %}
 
 
 
     {% if vidnews %}
-   <section class="video-section py-5 bg-dark text-white">
-  <div class="container">
-    <!-- 🔴 Section Title -->
-    <div class="text-center mb-4">
-      <h2 class="fw-bold text-dark mb-1"> Video News</h2>
-    </div>
-
-    <!-- 🧱 Video Grid -->
-    <div class="row g-4 mb-4">
-      {% for Blog in vidnews %}
-      <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="video-card rounded-3 overflow-hidden shadow-sm position-relative">
-          <!-- Thumbnail -->
-          <a href="/video/{{ Blog.slug }}" class="text-decoration-none">
-            <img 
-              src="https://img.youtube.com/vi/{{ Blog.video_url }}/hqdefault.jpg"
-              alt="{{ Blog.video_title }}"
-              class="video-thumb img-fluid w-100"
-              loading="lazy"
-            />
-            <div class="video-overlay d-flex align-items-center justify-content-center">
-              <i class="fa-solid fa-circle-play fa-2x text-white"></i>
-            </div>
-          </a>
-
-          <!-- Content -->
-          <div class="p-3 d-flex flex-column justify-content-between h-100">
-            <h6 class="fw-semibold text-white mb-2 video-title-min-height">
-              <a href="/video/{{ Blog.slug }}" class="text-white text-decoration-none">
-                {{ Blog.video_title|truncatechars:80 }}
-              </a>
-            </h6>
-
-            <div class="d-flex justify-content-between align-items-center small text-secondary mt-auto">
-              <span class="fw-semibold text-danger">
-                {% if Blog.author %}
-                  {{ Blog.author.first_name|capfirst }}
-                {% elif Blog.journalist %}
-                  {{ Blog.journalist.first_name|capfirst }}
-                {% else %}
-                  Admin
-                {% endif %}
-              </span>
-              <span>{{ Blog.schedule_date|date:"M d, Y" }}</span>
-            </div>
-          </div>
+<section class="video-section py-5 bg-dark text-white">
+    <div class="container">
+        <!-- 🔴 Section Title -->
+        <div class="text-center mb-4">
+        <h2 class="fw-bold text-dark mb-1"> Video News</h2>
         </div>
-      </div>
-      {% endfor %}
-    </div>
 
-    <!-- 📄 Pagination -->
-    <!-- <div class="d-flex justify-content-center mt-5">
-      <ul class="pagination pagination-sm">
-        {% if vidnews.has_previous %}
-        <li class="page-item"><a class="page-link text-danger bg-transparent border-0" href="?page={{ vidnews.previous_page_number }}"><i class="bi bi-chevron-left"></i></a></li>
-        {% endif %}
+        <!-- 🧱 Video Grid -->
+        <div class="row g-4 mb-4">
+        {% for Blog in vidnews %}
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="video-card rounded-3 overflow-hidden shadow-sm position-relative">
+            <!-- Thumbnail -->
+            <a href="/video/{{ Blog.slug }}" class="text-decoration-none">
+                <img 
+                src="https://img.youtube.com/vi/{{ Blog.video_url }}/hqdefault.jpg"
+                alt="{{ Blog.video_title }}"
+                class="video-thumb img-fluid w-100"
+                loading="lazy"
+                />
+                <div class="video-overlay d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-circle-play fa-2x text-white"></i>
+                </div>
+            </a>
 
-        {% for page_num in vidnews.paginator.page_range %}
-          {% if page_num == vidnews.number %}
-            <li class="page-item active"><span class="page-link bg-danger border-0">{{ page_num }}</span></li>
-          {% else %}
-            <li class="page-item"><a class="page-link bg-transparent text-white border-0" href="?page={{ page_num }}">{{ page_num }}</a></li>
-          {% endif %}
+            <!-- Content -->
+            <div class="p-3 d-flex flex-column justify-content-between h-100">
+                <h6 class="fw-semibold text-white mb-2 video-title-min-height">
+                <a href="/video/{{ Blog.slug }}" class="text-white text-decoration-none">
+                    {{ Blog.video_title|truncatechars:80 }}
+                </a>
+                </h6>
+
+                <div class="d-flex justify-content-between align-items-center small text-secondary mt-auto">
+                <span class="fw-semibold text-danger">
+                    {% if Blog.author %}
+                    {{ Blog.author.first_name|capfirst }}
+                    {% elif Blog.journalist %}
+                    {{ Blog.journalist.first_name|capfirst }}
+                    {% else %}
+                    Admin
+                    {% endif %}
+                </span>
+                <span>{{ Blog.schedule_date|date:"M d, Y" }}</span>
+                </div>
+            </div>
+            </div>
+        </div>
         {% endfor %}
+        </div>
 
-        {% if vidnews.has_next %}
-        <li class="page-item"><a class="page-link text-danger bg-transparent border-0" href="?page={{ vidnews.next_page_number }}"><i class="bi bi-chevron-right"></i></a></li>
-        {% endif %}
-      </ul>
-    </div> -->
-  </div>
+        <!-- 📄 Pagination -->
+        <!-- <div class="d-flex justify-content-center mt-5">
+        <ul class="pagination pagination-sm">
+            {% if vidnews.has_previous %}
+            <li class="page-item"><a class="page-link text-danger bg-transparent border-0" href="?page={{ vidnews.previous_page_number }}"><i class="bi bi-chevron-left"></i></a></li>
+            {% endif %}
+
+            {% for page_num in vidnews.paginator.page_range %}
+            {% if page_num == vidnews.number %}
+                <li class="page-item active"><span class="page-link bg-danger border-0">{{ page_num }}</span></li>
+            {% else %}
+                <li class="page-item"><a class="page-link bg-transparent text-white border-0" href="?page={{ page_num }}">{{ page_num }}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            {% if vidnews.has_next %}
+            <li class="page-item"><a class="page-link text-danger bg-transparent border-0" href="?page={{ vidnews.next_page_number }}"><i class="bi bi-chevron-right"></i></a></li>
+            {% endif %}
+        </ul>
+        </div> -->
+    </div>
 </section>
     {% endif %}
     
