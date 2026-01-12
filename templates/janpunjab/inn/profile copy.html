@@ -69,7 +69,7 @@
                     <ul class="dropdown-menu dropdown-menu-end shadow">
                         <li class="m-2">
                             <a  href="#" target="_blank">
-                                <i class="fab fa-x-twitter bg-light-x me-2"></i> Twitter
+                                <i class="bi bi-twitter-x me-2"></i> Twitter
                             </a>
                         </li>
                         <li class="m-2">
@@ -79,17 +79,17 @@
                         </li>
                         <li class="m-2">
                             <a class="" href="#" target="_blank">
-                                <i class="fab fa-facebook-f me-2 text-primary"></i> Facebook
+                                <i class="bi bi-facebook me-2 text-primary"></i> Facebook
                             </a>
                         </li>
                         <li class="m-2">
                             <a class="" href="#" target="_blank">
-                                <i class="fab fa-linkedin me-2 text-primary"></i> Linkedin
+                                <i class="bi bi-linkedin me-2 text-primary"></i> Linkedin
                             </a>
                         </li>
                         <li class="m-2">
                             <a class="" href="#" target="_blank">
-                                <i class="fab fa-youtube me-2 text-danger"></i> Youtube
+                                <i class="bi bi-youtube me-2 text-danger"></i> Youtube
                             </a>
                         </li>
                         <li class="m-2">
@@ -116,12 +116,12 @@
             <!-- TABS -->
             <ul class="nav story-tabs mb-4" role="tablist">
                 <li>
-                <button class="tab-link active" data-bs-toggle="tab" data-bs-target="#newsTab">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#newsTab">
                     News
                 </button>
                 </li>
                 <li>
-                <button class="tab-link" data-bs-toggle="tab" data-bs-target="#videoTab">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#videoTab">
                     Videos
                 </button>
                 </li>
@@ -173,26 +173,40 @@
                             <!-- SHARE + SOCIAL -->
                             <div class="d-flex align-items-center gap-3 mt-2 mx-2">
 
-                           <div class="news-social">
-                                <div class=" d-flex gap-3 mt-2 mb-0">
-                                    <div class="">{% include 'share.html' with posts=post %}</div>
-                                    {% if profile_setting.facbook %}
-                                        <div class=""><a href="{{ profile_setting.facbook }}" target="_blank" class=" fs-5"><i class="fab fa-facebook-f"></i></a></div>
-                                    {% endif %}
-                                    {% if profile_setting.twitter %}
-                                        <div class=""><a href="{{ profile_setting.twitter }}" target="_blank" class=" fs-5"><i class="fab fa-x-twitter bg-light"></i></a></div>
-                                    {% endif %}
-                                    {% if profile_setting.instagram %}
-                                        <div class=""><a href="{{ profile_setting.instagram }}" target="_blank" class=" fs-5"><i class="fab fa-instagram"></i></a></div>
-                                    {% endif %}
-                                    {% if profile_setting.youtube %}
-                                        <div class=""><a href="{{ profile_setting.youtube }}" target="_blank" class=" fs-5"><i class="fab fa-youtube"></i></a></div>
-                                    {% endif %}
-                                    {% if profile_setting.linkedin %}
-                                        <div class=""><a href="{{ profile_setting.linkedin }}" target="_blank" class=" fs-5"><i class="fab fa-linkedin"></i></a></div>
-                                    {% endif %}
-                                </div>
+                            <div class="s-icon">
+                                {% include 'share.html' with posts=post %}
                             </div>
+
+                            {% if profile_setting.youtube %}
+                                <a href="{{ profile_setting.youtube }}" target="_blank" class="fs-5 s-icon">
+                                <i class="bi bi-youtube"></i>
+                                </a>
+                            {% endif %}
+
+                            {% if profile_setting.facbook %}
+                                <a href="{{ profile_setting.facbook }}" target="_blank" class="fs-5 s-icon">
+                                <i class="bi bi-facebook"></i>
+                                </a>
+                            {% endif %}
+
+                            {% if profile_setting.instagram %}
+                                <a href="{{ profile_setting.instagram }}" target="_blank" class="fs-5 s-icon">
+                                <i class="bi bi-instagram"></i>
+                                </a>
+                            {% endif %}
+
+                            {% if profile_setting.twitter %}
+                                <a href="{{ profile_setting.twitter }}" target="_blank" class="fs-5 s-icon">
+                                <i class="bi bi-twitter"></i>
+                                </a>
+                            {% endif %}
+
+                            {% if profile_setting.linkedin %}
+                                <a href="{{ profile_setting.linkedin }}" target="_blank" class="fs-5 s-icon">
+                                <i class="bi bi-linkedin"></i>
+                                </a>
+                            {% endif %}
+
                             </div>
                         </div>
                     </div>
@@ -223,21 +237,21 @@
                         </div>
                             <div class="news-social">
                                 <div class=" d-flex gap-3 mt-2 mb-0">
-                                    <div class="">{% include 'share.html' with posts=post %}</div>
+                                    <div class="s-icon">{% include 'share.html' with posts=post %}</div>
                                 {% if profile_setting.facbook %}
-                                    <div class=""><a href="{{ profile_setting.facbook }}" target="_blank" class=" fs-5"><i class="fab fa-facebook-f"></i></a></div>
+                                    <div class="s-icon"><a href="{{ profile_setting.facbook }}" target="_blank" class=" fs-5"><i class="bi bi-facebook"></i></a></div>
                                 {% endif %}
                                 {% if profile_setting.twitter %}
-                                    <div class=""><a href="{{ profile_setting.twitter }}" target="_blank" class=" fs-5"><i class="fab fa-x-twitter bg-light"></i></a></div>
+                                    <div class="s-icon"><a href="{{ profile_setting.twitter }}" target="_blank" class=" fs-5"><i class="bi bi-twitter"></i></a></div>
                                 {% endif %}
                                 {% if profile_setting.instagram %}
-                                    <div class=""><a href="{{ profile_setting.instagram }}" target="_blank" class=" fs-5"><i class="fab fa-instagram"></i></a></div>
+                                    <div class="s-icon"><a href="{{ profile_setting.instagram }}" target="_blank" class=" fs-5"><i class="bi bi-instagram"></i></a></div>
                                 {% endif %}
                                 {% if profile_setting.youtube %}
-                                    <div class=""><a href="{{ profile_setting.youtube }}" target="_blank" class=" fs-5"><i class="fab fa-youtube"></i></a></div>
+                                    <div class="s-icon"><a href="{{ profile_setting.youtube }}" target="_blank" class=" fs-5"><i class="bi bi-youtube"></i></a></div>
                                 {% endif %}
                                 {% if profile_setting.linkedin %}
-                                    <div class=""><a href="{{ profile_setting.linkedin }}" target="_blank" class=" fs-5"><i class="fab fa-linkedin"></i></a></div>
+                                    <div class="s-icon"><a href="{{ profile_setting.linkedin }}" target="_blank" class=" fs-5"><i class="bi bi-linkedin"></i></a></div>
                                 {% endif %}
                                 </div>
                             </div>
@@ -418,9 +432,7 @@ document.addEventListener("DOMContentLoaded", function () {
     transform: translateY(0);
     background: #fafafa !important;
 }
-.dropdown-toggle::after{
-    display: none !important;
-}
+
     .art-banner {
         width: 100%;
         height: 250px;
@@ -498,7 +510,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* SOCIAL ICONS */
 .news-social a{
-    font-size:16px !important;
+    font-size:16px;
     transition:.3s;
 }
 .news-social a:hover{
@@ -528,7 +540,7 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 /* tabs */
-.story-tabs .tab-link {
+.story-tabs .nav-link {
     border: none;
     padding: 10px 25px 5px;
     border-radius: 20px;
@@ -540,11 +552,11 @@ document.addEventListener("DOMContentLoaded", function () {
     
 }
 
-.story-tabs .tab-link.active {
+.story-tabs .nav-link.active {
     background: #ed1c24;
     color: #fff;
 }
-.tab-link:hover {
+.nav-link:hover {
     background: #ed1c24;
     color: #fff !important;
 }

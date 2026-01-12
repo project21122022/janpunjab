@@ -115,17 +115,26 @@ WSGI_APPLICATION = 'jpapp.wsgi.application'
 
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'janpunjab',       # phpMyAdmin में बनाया हुआ database नाम
+#         'USER': 'root',       # XAMPP default user
+#         'PASSWORD': '',  # default में password खाली होता है
+#         'HOST': '127.0.0.1',  # localhost भी लिख सकते हो
+#         'PORT': '3306',       # default MySQL port
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'janpunjab',       # phpMyAdmin में बनाया हुआ database नाम
-        'USER': 'root',       # XAMPP default user
-        'PASSWORD': '',  # default में password खाली होता है
-        'HOST': '127.0.0.1',  # localhost भी लिख सकते हो
-        'PORT': '3306',       # default MySQL port
+        'NAME': 'janpunjab',        
+        'USER': 'root',       
+        'PASSWORD': '',       
+        'HOST': '127.0.0.1',   
+        'PORT': '3306',       
     }
 }
-
 
 # DATABASES = {
 #     'default': {

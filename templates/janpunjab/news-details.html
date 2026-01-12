@@ -47,6 +47,7 @@ li {
 }
 
 </style>
+<div class="topspace"></div>
 <div class="container my-5">
   <div class="row pt-3">
     <div class="col-lg-9 col-md-7 col-sm-12">
@@ -64,9 +65,9 @@ li {
         <img class="img-fluid w-100" src="{{ Blogdetails.post_image.url }}" style="object-fit: cover"
           alt="{{ Blogdetails.post_title }}" title="{{ Blogdetails.post_title }}" loading="lazy">
         {% endif %}
-        <div class="p-3 card-background">
+        <div class="card-background">
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 my-2">
               <p class="m-0">
                 {% if Blogdetails.author %}
                 Post by : {{ Blogdetails.author.first_name|default:""|capfirst }}
@@ -88,8 +89,8 @@ li {
                 <small ><i class="far fa-eye mr-2"></i>{{ Blogdetails.post_status|add:Blogdetails.viewcounter }}</small>
               </div>
             </div>
-            <div class="col-lg-6 mt-3">
-              <div class="social-share" style="display: flex; float: right; gap:10px;">
+            <div class="col-lg-6 mt-2">
+              <div class="social-share d-flex gap-2 float-start float-md-end">
                 <div class="slider-item1">
                   <a href="https://api.whatsapp.com/send?text=Check%20this%20out!%20{{ request.build_absolute_uri }}" target="_blank">
                     <i class="fab fa-whatsapp"></i>
@@ -140,7 +141,7 @@ li {
          
 
           {% for tag in Blogdetails.tags.all %}
-          <a href="/topic/{{ tag.slug }}" class="badge bg-secondary">#{{ tag.name }}</a>
+          <a href="/topic/{{ tag.slug }}" class="badge bg-primary text-white pt-2">#{{ tag.name }}</a>
           {% endfor %}
         </div>
       </div>

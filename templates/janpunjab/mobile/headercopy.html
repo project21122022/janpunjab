@@ -341,7 +341,7 @@
 </script>
 
 
-<!-- <script>
+<script>
   document.querySelectorAll('.mobilemenu-link').forEach(link => {
       link.addEventListener('click', function(e) {
           const href = this.getAttribute('href');
@@ -371,21 +371,6 @@
           }, 300);
       }
   });
-</script> -->
-
-<script>
-document.querySelectorAll('.mobilemenu-link').forEach(link => {
-    link.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-
-        if (href.startsWith('#')) {
-            e.preventDefault();
-            const sectionID = href.replace('#', '');
-
-            // clean redirect
-            window.location.href = '/?scrollTo=' + sectionID;
-        }
-    });
-});
 </script>
+
 

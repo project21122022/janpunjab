@@ -53,3 +53,22 @@ htmlcov/
 
 # Django migration cache
 **/migrations/__pycache__/
+
+_pycache_/
+db.sqlite3
+*/migrations/
+env/
+.env
+env2/
+logs/
+media/
+upload/
+static*
+newsibleasia.sqlite3
+env
+static/videos/
+*.sqlite3
+static/assets/videos/
+*.mp4
+db.sqlite3
+newsibleasia.sqlite3
